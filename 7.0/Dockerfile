@@ -48,6 +48,8 @@ RUN yum install -y centos-release-scl && \
                   rh-php70-php-process rh-php70-php-soap rh-php70-php-opcache rh-php70-php-xml \
                   rh-php70-php-gmp httpd24-mod_ssl" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
+    yum install -y epel-release && \
+    yum install -y --setopt=tsflags=nodocs sclo-php70-php-imap --nogpgcheck && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
