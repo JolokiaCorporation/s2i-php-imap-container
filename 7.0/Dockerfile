@@ -40,7 +40,7 @@ LABEL summary="${SUMMARY}" \
       usage="s2i build https://github.com/sclorg/s2i-php-container.git --context-dir=${PHP_VERSION}/test/test-app centos/${NAME}-${PHP_VER_SHORT}-centos7 sample-server" \
       maintainer="SoftwareCollections.org <sclorg@redhat.com>"
 
-# Install Apache httpd and PHP
+# Install Apache httpd and PHP and pdftk
 RUN yum install -y centos-release-scl && \
     yum-config-manager --enable centos-sclo-rh-testing && \
     INSTALL_PKGS="rh-php70 rh-php70-php rh-php70-php-mysqlnd rh-php70-php-pgsql rh-php70-php-bcmath \
@@ -50,6 +50,7 @@ RUN yum install -y centos-release-scl && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
     yum install -y epel-release && \
     yum install -y --setopt=tsflags=nodocs sclo-php70-php-imap --nogpgcheck && \
+	yum localinstall https://www.linuxglobal.com/static/blog/pdftk-2.02-1.el7.x86_64.rpm
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
