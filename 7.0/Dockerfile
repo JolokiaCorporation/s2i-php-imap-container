@@ -50,7 +50,7 @@ RUN yum install -y centos-release-scl && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
     yum install -y epel-release && \
     yum install -y --setopt=tsflags=nodocs sclo-php70-php-imap --nogpgcheck && \
-	yum localinstall https://www.linuxglobal.com/static/blog/pdftk-2.02-1.el7.x86_64.rpm && \
+	yum localinstall -y https://www.linuxglobal.com/static/blog/pdftk-2.02-1.el7.x86_64.rpm && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
